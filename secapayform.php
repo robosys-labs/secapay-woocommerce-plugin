@@ -89,13 +89,15 @@ public function admin_options() {
 					'title' => __( 'Title', 'woo-secapayform-bols' ),
 					'type' => 'text',
 					'description' => __( 'This controls the title which the user sees during checkout.', 'woo-secapayform-bols' ),
-					'default' => __( 'Secapay', 'woo-secapayform-bols' )
+					'default' => __( 'Secapay', 'woo-secapayform-bols' ),
+					'custom_attributes' => array('readonly'=>true)
 				),
 				'description' => array(
 					'title' => __( 'Description', 'woo-secapayform-bols' ),
 					'type' => 'text',
 					'description' => __( 'This controls the description which the user sees during checkout.', 'woo-secapayform-bols' ),
-					'default' => __("Pay via Secapay; you can pay with your Credit Card.", 'woo-secapayform-bols')
+					'default' => __("Pay via Secapay; you can pay with your Credit Card.", 'woo-secapayform-bols'),
+					'custom_attributes' => array('readonly'=>true)
 				),
 			
 				'button_link' => array(
@@ -156,7 +158,9 @@ public function admin_options() {
 		$url = $order->get_checkout_payment_url();
 
 		return  '<form action="'.esc_url($newbutton).'" method="post" id="secapay_payment_form">
+
 					<input type="submit" class="button" id="submit_secapay_payment_form" value="'.__('Pay via Secapay', 'woo-secapayform-bols').'" /> <a class="button cancel" href="'.esc_url( $order->get_cancel_order_url() ).'">'.__('Cancel order &amp; restore cart', 'woo-secapayform-bols').'</a>
+
 			</form>';
 
 	}

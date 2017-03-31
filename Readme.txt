@@ -25,7 +25,10 @@ This Plugin allows you to accept Secapay Payments removing the need for you to m
 4. Activate the plugin through the 'Plugins' menu in WordPress Administration.
 5. Download and install woocommerce plugin and activate it same way as the secapay plugin.
 6. Register with Secapay.com and create a button to receive payment on your site.
-7. Every button has an ID, copy your button ID.
+7. You can create a button through your dashboard. If you are trying to
+receive money for your business, you’re advised to create a ‘Business button’.
+8. Click the code symbol -- ‘<>’ for the button you just generated. You’ll
+see something similar to: https://demo.secapay.com/pay?button=1&amount=50. This is a button ID copy it.
 
 
 
@@ -33,9 +36,8 @@ This Plugin allows you to accept Secapay Payments removing the need for you to m
 
 1. Go to WooCommerce settings->checkout->Secapay Form. 
 2. In Secapay Form, enable Secapay. 
-3. Leave the title and description the way it is.
-4. Paste the button ID gotten from secapay.com into the button ID field.
-5. Save Changes and your plugin is ready for use.
+3. Paste the button ID gotten from secapay.com into the button ID field.
+4. Save Changes and your plugin is ready for use.
 
 
 
