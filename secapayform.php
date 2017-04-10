@@ -42,7 +42,7 @@ function init_woocommerce_secapayform() {
 			// Define user set variables
 			$this->title 		= $this->settings['title'];
 			$this->description 	= $this->settings['description'];
-			$this->button_link = $this->settings['button_link'];
+			$this->button_id = $this->settings['button_id'];
 			$this->notify_url   = str_replace( 'https:', 'http:', home_url( '/wc-api/woocommerce_secapayform' ) );
 
 			// Actions
@@ -63,7 +63,7 @@ function init_woocommerce_secapayform() {
 public function admin_options() {
 	?>
 	<h3><?php _e('Secapay', 'woo-secapayform-bols'); ?></h3>
-	<p><?php _e('Secapay works by sending the user to Secapay to enter their payment information.' , 'woo-secapayform-bols'); ?></p>
+	<p><?php _e('Secapay works by sending the user to Secapay to make payment and redirects the user back to your site .' , 'woo-secapayform-bols'); ?></p>
 	<table class="form-table">
 	<?php
 
@@ -100,7 +100,7 @@ public function admin_options() {
 					'custom_attributes' => array('readonly'=>true)
 				),
 			
-				'button_link' => array(
+				'button_id' => array(
 					'title' => __( 'Button ID', 'woo-secapayform-bols' ),
 					'type' => 'text',
 					'description' => __( 'Please enter your button ID provided by Secapay.', 'woo-secapayform-bols' ),
@@ -130,7 +130,7 @@ public function admin_options() {
 		
 		wc_enqueue_js('
 			jQuery("body").block({
-					message: "'.__('Directing to Secapay to make Payment.', 'woo-secapayform-bols').'",
+					message: "'.__('directing to Secapay to make Payment.', 'woo-secapayform-bols').'",
 					overlayCSS:
 					{
 						background: "#fff",
@@ -151,12 +151,12 @@ public function admin_options() {
 
 		$total = $this->get_order_total();
 
-		$nwbutton = str_replace("50", $total, $this->button_link);
+		$button_code = 'https://secapay.com/pay?button='.$this->button_id. '&amount=50';
+
+ 		$nwbutton = str_replace("50", $total, $button_code);
 
 		$newbutton = $nwbutton .  '&redirect_url=' . $this->notify_url . '?order_id=' . $order->id;
 	
-		$url = $order->get_checkout_payment_url();
-
 		return  '<form action="'.esc_url($newbutton).'" method="post" id="secapay_payment_form">
 
 					<input type="submit" class="button" id="submit_secapay_payment_form" value="'.__('Pay via Secapay', 'woo-secapayform-bols').'" /> <a class="button cancel" href="'.esc_url( $order->get_cancel_order_url() ).'">'.__('Cancel order &amp; restore cart', 'woo-secapayform-bols').'</a>

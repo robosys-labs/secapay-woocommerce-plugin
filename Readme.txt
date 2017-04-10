@@ -1,13 +1,13 @@
-
-=== Secapay Form Gateway for WooCommerce ===
+=== Secapay Gateway for WooCommerce ===
 Contributors: sci
-Tags: ecommerce, payment gateway, wordpress, woocommerce,secapay form, sci.ng
+Tags: ecommerce, payment gateway, wordpress, woocommerce, secapay, sci.ng
 Requires at least: 4.0
 Tested up to: 4.7
 Stable tag: 0.0.1
 License: 
 
-Secapay Form Gateway for accepting payments on your WooCommerce Store.
+Secapay Gateway for accepting payments on your WooCommerce Store.
+
 
 == Description ==
 
@@ -28,7 +28,8 @@ This Plugin allows you to accept Secapay Payments removing the need for you to m
 7. You can create a button through your dashboard. If you are trying to
 receive money for your business, you’re advised to create a ‘Business button’.
 8. Click the code symbol -- ‘<>’ for the button you just generated. You’ll
-see something similar to: https://demo.secapay.com/pay?button=1&amount=50. This is a button ID copy it.
+see something similar to: https://demo.secapay.com/pay?button=1&amount=50. The button id for this button is 1.
+9. Copy the button id of the button you just created.
 
 
 
